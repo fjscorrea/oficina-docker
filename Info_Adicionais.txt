@@ -1,0 +1,11 @@
+# Que outros efeitos colaterais temos ao utilizar um arquivo com alto nível de mudança de conteúdo fora de um volume?
+-> Consumo alto de espaço em disco e overread para leitura e gravação de dados.
+
+# Considerando que o objetivo atual é auxiliar no desenvolvimento da aplicação, existe alguma maneira mais simples de manter o arquivo de log ativo e acessível para o desenvolvedor?
+-> Acredito que a criação do volume do tipo BIND e não Named Space como foi criado seja a melhor abordagem, embora necessite de cuidados com o consumo de espaço.
+
+# Se removermos o contêiner o que acontecerá com o volume?
+-> O volume é mantido, em consequencia, o espaço em disco permanece alocado.
+
+# Se removermos o volume o que acontecerá o arquivo foo.log?
+-> Será perdido.
