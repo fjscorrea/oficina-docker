@@ -1,13 +1,22 @@
 version: '2'
 
 volumes:
-  aula2-logs:
+  app_data:
+  redis_data:
 
 services:
-  aula2:
-    image: oficina-docker:aula2-volumes
+  app:
+    image: oficina:aula3-network
+    container_name: aula-3
+    environment:
+     - REDIS_URL=redis
+    build: .
     volumes:
-      - aula2-logs:/tmp
-    container_name: aula-2
+      - app_data:/tmp
     ports:
-      - "5000:5000"
+      - 5000:5000
+
+  redis:
+    image: redis:alpine
+    volumes:
+      - redis_data:/data
